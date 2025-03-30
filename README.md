@@ -79,11 +79,8 @@ while(1){
 - The exact delay depends on the CPU clock speed.
 
 ### Output
-When on-board LED is OFF.
-![WhatsApp Image 2025-03-30 at 20 28 20](https://github.com/user-attachments/assets/bb6db1a2-3553-401a-886e-9280226750fc)
-<br>
-When on-board LED is ON.
-![WhatsApp Image 2025-03-30 at 20 28 20 (1)](https://github.com/user-attachments/assets/a4d8bfb1-84d1-4c38-b567-7f595fd67e95)
+ON and OFF of on-board LED.
 
+https://github.com/user-attachments/assets/ceb7df33-c68e-4283-8a62-9ff17bf89488
 
 </detail>
