@@ -11,7 +11,7 @@ Programs were Flashed using a ST-Link V2
 ## Pin Diagram
 ![image](https://github.com/user-attachments/assets/ee903458-2c5b-4796-92c8-328674ff9ddf)
 
-## Projects
+## Mini-Projects
 | S.no  | Project Name | Description | Code |
 |----|-------------|-------------|--------|
 | 01 | LED Blink | Blinking onboard LED (PC13) | [link](https://github.com/galvin-benson/BareMetal_STM32/blob/d4d827f9787c41d1d5f38766cc8d9db26bce9959/Blink_LED/main.c) |
