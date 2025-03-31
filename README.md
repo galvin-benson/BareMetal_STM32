@@ -19,7 +19,7 @@ Programs were Flashed using a ST-Link V2
 | 03 |  |  | link |
 <details>
   <summary><big><b> 1 - LED BLINK </b></big></summary>
-  <p> This project blinks the onboard LED using GPIOC pin 13. </p>
+  <p> This project blinks the onboard LED using GPIOC pin 13.<br> To Toggle the LED Pin we can use ODR(Output Data Register) or for Set and Reset we can use BSRR (Bit Set/Reset Register).</p>
 
 ### Pin Connections
 | STM32 Pin | Function |
@@ -77,6 +77,23 @@ while(1){
 - **for(int i=0; i<680000; i++) {}**
 - Creates a delay (not precise, just a loop for roughly 1sec delay).
 - The exact delay depends on the CPU clock speed.
+
+```plaintext
+while(1){
+    GPIOC->BSRR = LED_PIN;  // Turn ON LED (Set PC13 = 1)
+    for(int i=0; i<680000; i++) {}  // Delay
+    
+    GPIOC->BSRR = (1U<<29); // Turn OFF LED (Reset PC13 = 0)
+    for(int i=0; i<680000; i++) {}  // Delay
+}
+```
+- GPIOC->BSRR (Bit Set/Reset Register)
+- GPIOC->BSRR = LED_PIN; (Turn ON LED)
+- BSRR's lower 16 bits (0-15) set a pin HIGH (1).
+- GPIOC->BSRR = (1U<<29); (Turn OFF LED)
+- BSRR's upper 16 bits (16-31) reset a pin LOW (0).
+- Why use BSRR? Faster & safer than using GPIOC->ODR ^= LED_PIN;
+- Avoids read-modify-write issues (which can cause glitches).
 
 ### Output
 ON and OFF of on-board LED.
