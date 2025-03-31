@@ -14,8 +14,8 @@ Programs were Flashed using a ST-Link V2
 ## Mini-Projects
 | S.no  | Project Name | Description | Code |
 |----|-------------|-------------|--------|
-| 01 | LED Blink | Blinking onboard LED (PC13) | [link](https://github.com/galvin-benson/BareMetal_STM32/blob/d4d827f9787c41d1d5f38766cc8d9db26bce9959/Blink_LED/main.c) |
-| 02 |  |  | link |
+| 01 | LED Blink with simple Delay | Blinking onboard LED (PC13) | [link](https://github.com/galvin-benson/BareMetal_STM32/blob/d4d827f9787c41d1d5f38766cc8d9db26bce9959/Blink_LED/main.c) |
+| 02 | LED Control with switch | Turn ON and OFF onboard LED (PC13) based on Switch (PA0) | link |
 | 03 |  |  | link |
 <details>
   <summary><big><b> 1 - LED BLINK </b></big></summary>
@@ -100,4 +100,45 @@ ON and OFF of on-board LED.
 
 https://github.com/user-attachments/assets/ceb7df33-c68e-4283-8a62-9ff17bf89488
 
-</detail>
+</details>
+
+<details>
+  <summary><big><b> 2 - LED CONTROL </b></big></summary>
+  <p> This project controls the onboard LED using GPIOC pin 13 based on switch input in GPIOA pin 0.</p>
+
+### Pin Connections
+| STM32 Pin | Function |
+|-----------|----------|
+| PC13      | LED |
+| PCA0     | SWITCH |
+
+### Code Explanation
+- Configure PA0 as Input (Button)
+```plaintext
+GPIOA->CRL &= ~(0xF << (0 * 4));  // Clear PA0 configuration
+GPIOA->CRL |=  (0x4 << (0 * 4));  // 0b0100 = Input mode (Pull-up/Pull-down)
+```
+- PA0 is configured as input mode (Pull-up/Pull-down).
+- The CRL register controls pins 0-7 of GPIOA.
+- Bit shifting (0 * 4) targets PA0.
+- 0x4 configures it as Input with Pull-up/Pull-down.
+<br>
+- Main Loop: Read Button & Control LED
+
+```plaintext
+while(1){
+    if(!(GPIOA->IDR & BTN_PIN))
+        GPIOC->BSRR = LED_PIN;  // Turn ON LED
+    else
+        GPIOC->BSRR = (1U<<29); // Turn OFF LED
+}
+```
+
+- GPIOA->IDR & BTN_PIN reads PA0 state.
+- Active LOW logic:
+-  When button is pressed (PA0 = LOW), LED turns ON.
+-  When button is not pressed (PA0 = HIGH), LED turns OFF.
+- BSRR register (Bit Set/Reset Register):
+-  GPIOC->BSRR = LED_PIN; → Set PC13 HIGH (LED ON).
+-  GPIOC->BSRR = (1U << 29); → Reset PC13 LOW (LED OFF).
+</details>
