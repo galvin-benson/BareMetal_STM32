@@ -14,8 +14,8 @@ Programs were Flashed using a ST-Link V2
 ## Mini-Projects
 | S.no  | Project Name | Description | Code |
 |----|-------------|-------------|--------|
-| 01 | LED Blink with simple Delay | Blinking onboard LED (PC13) | [link](https://github.com/galvin-benson/BareMetal_STM32/blob/d4d827f9787c41d1d5f38766cc8d9db26bce9959/Blink_LED/main.c) |
-| 02 | LED Control with switch | Turn ON and OFF onboard LED (PC13) based on Switch (PA0) | link |
+| 01 | LED Blink with simple Delay | Blinking onboard LED (PC13) | [link](https://github.com/galvin-benson/BareMetal_STM32/tree/main/Blink_LED) |
+| 02 | LED Control with switch | Turn ON and OFF onboard LED (PC13) based on Switch (PA0) | [link](https://github.com/galvin-benson/BareMetal_STM32/tree/main/LED_Control) |
 | 03 |  |  | link |
 <details>
   <summary><big><b> 1 - LED BLINK </b></big></summary>
